@@ -1,18 +1,20 @@
- /*
+/*
  	- quando um package tem um "x" quer dizer que o mesmo esta em fase experimental
 	 instalar o package com o comando 
  	go get -u golang.org/x/crypto/bcrypt
- */
+
+	NÃO FUNCIONOU AINDA 
+*/
 
 package main
 
- import ("fmt"
-         "crypto/bcrypt"
- )
+import "golang.org/x/crypto/bcrypt"
+import "fmt"
+
 
  func main(){
 	senha := "15011989"
-
+	
 
 	slicebyte, err := bcrypt.GenerateFromPassword([]byte(senha),10)
 
@@ -21,4 +23,4 @@ package main
 	} else {
 		fmt.Println(slicebyte)
 	}
- }
+ }                                                  
