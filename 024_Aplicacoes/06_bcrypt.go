@@ -4,12 +4,12 @@
  	go get -u golang.org/x/crypto/bcrypt
 
 	NÃO FUNCIONOU AINDA 
-*/
-
+*/ 
 package main
 
-import "golang.org/x/crypto/bcrypt"
-import "fmt"
+import ("fmt"
+		"golang.org/x/crypto/bcrypt"
+)
 
 
  func main(){
@@ -21,6 +21,7 @@ import "fmt"
 	if err != nil{
 		fmt.Println(err)
 	} else {
-		fmt.Println(slicebyte)
+		fmt.Printf("%s",slicebyte)
 	}
- }                                                  
+ }     
+                                            
