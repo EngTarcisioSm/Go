@@ -16,7 +16,7 @@ func main(){
 
 	wg.Add(2)
 
-	go print1()
+	go print1()	           
 	go print2()
 
 	wg.Wait()
