@@ -16,7 +16,7 @@ import (
 func main(){
 	 canal := converge(trabalho("Primeiro"), trabalho("Segundo"))
 
-	 for x:=0; x<100; x++{
+	 for x:=0; x<10; x++{
 		 fmt.Println(<-canal)
 	 }
 }
