@@ -12,10 +12,23 @@
 */
 package main
 
+import (
+	"fmt"
+	"sync"
+)
+
 func main() {
 	par := make(chan int)
 	impar := make(chan int)
-	converge := make(chan int)
+	converge := make(chan int) 
+
+	go envia(par, impar)
+
+	go recebe(par, impar, converge)
+
+	for v:= range converge{
+		fmt.Println(v)
+	}
 
 }
 
@@ -29,6 +42,28 @@ func envia(p, i chan int) {
 		}
 	}
 	close(p)
+	close(i)
 }
 
-//parei em 2:45
+func recebe(p, i, c chan int){
+	var wg sync.WaitGroup
+
+	wg.Add(1)
+	go func(){
+		for v:= range p{
+			c <- v
+		}
+		wg.Done()
+	}()
+
+	wg.Add(1)
+	go func(){
+		for v:= range i{
+			c <- v
+		}
+		wg.Done()
+	}()
+	wg.Wait()
+	close(c)
+
+}
